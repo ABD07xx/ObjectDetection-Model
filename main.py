@@ -23,13 +23,13 @@ st.markdown("Upload an image: ")
 
 #Uploading image
 up_image = st.file_uploader(" ", type=['jpg','png','jpeg'])
-image = Image.open(up_image)
-image = np.array(image)
 #Submit Button
 submit = st.button('Predict')
 #On predict button click
 if submit:
     if up_image is not None:
+        image = Image.open(up_image)
+        image = np.array(image)
         #Size of image 
         (h, w) = image.shape[:2]
         blob   = cv2.dnn.blobFromImage(cv2.resize(image,(300,300)),0.007843,(300,300),127.5)
